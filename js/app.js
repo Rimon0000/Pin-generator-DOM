@@ -1,3 +1,4 @@
+//pin generate part
 function getPin(){
     const pin = generatePin();
     const pinString = pin + '';
@@ -20,4 +21,33 @@ document.getElementById('generate-pin').addEventListener('click', function(){
     //display pin
     const displayPinField = document.getElementById('display-pin');
     displayPinField.value = pin;
+})
+
+//calculator part
+document.getElementById('calculator').addEventListener('click', function(event){
+    const number = event.target.innerText;
+    const typedNumberField = document.getElementById('typed-numbers');
+    const previousTypedNumber = typedNumberField.value;
+    if(isNaN(number)){
+        if(number === 'C'){
+            typedNumberField.value = '';
+        }
+        else if(number === '<'){
+            const digits = previousTypedNumber.split('');
+            digits.pop();
+            const remainingDigits = digits.join('');
+            typedNumberField.value = remainingDigits;
+        }
+    }
+    else{
+        
+        const newTypedNumber = previousTypedNumber + number;
+        typedNumberField.value = newTypedNumber;
+
+    }
+})
+
+//matching part
+document.getElementById('verify-pin').addEventListener('click', function(){
+    
 })
